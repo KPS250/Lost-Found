@@ -2,14 +2,14 @@ package com.horizon.lostfound.model
 
 class LostItem (
     val image: String,
-    //val catTags: ArrayList<String>,
+    val catTags: String,
     val desc: String,
     val dateTime: Long,
-    val lat:Long,
-    val long:Long,
+    val lat:Double,
+    val long:Double,
     val complaintId:String,
     val trainName:String,
     val contactName:String,
-    val contactNo:Long,
+    val contactNo:String,
     val status:Boolean
 )

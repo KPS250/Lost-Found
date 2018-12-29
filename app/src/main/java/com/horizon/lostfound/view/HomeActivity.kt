@@ -1,5 +1,6 @@
 package com.horizon.lostfound.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
@@ -33,9 +34,6 @@ class HomeActivity : AppCompatActivity() {
 
         firebaseHelper = FirebaseHelper(this)
         sharedPreferencesHelper = SharedPreferencesHelper(this)
-
-        var lostItem =
-            LostItem("","123",125,1,2,"234","Sam","Kiran",789,true)
 
        // firebaseHelper.addLostItem(lostItem)
 
@@ -76,12 +74,23 @@ class HomeActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.add_found_item -> {
+
+                var intent = Intent(this, AddLostItem::class.java)
+                startActivity(intent)
+                this.finish()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
 }
+
+interface OnDataReceiveCallback {
+    fun onDataReceived(eventList: java.util.ArrayList<LostItem>)
+}
+
 
 
 

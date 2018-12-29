@@ -11,41 +11,43 @@
         app:cardMaxElevation="7dp"
         android:layout_margin="10dp">
 
-    <ImageView
-            android:id="@+id/img_event"
-            android:src="@drawable/ic_launcher_background"
-            android:scaleType="centerCrop"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"/>
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_margin="5dp"
+                  android:orientation="horizontal">
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp">
-
-        <TextView
-                android:id="@+id/tv_datetime"
-                android:textSize="20sp"
+        <ImageView
+                android:id="@+id/iv_item"
+                android:src="@drawable/ic_launcher_background"
+                android:scaleType="centerCrop"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"/>
+                android:layout_height="match_parent"/>
 
-        <TextView
-                android:id="@+id/tv_name"
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+            <TextView
+                    android:id="@+id/tv_desc"
+                    android:text="Sample Desc"
 
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <TextView
-                android:id="@+id/tv_organizer"
-                android:textSize="15sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/tv_name"/>
+            <TextView
+                    android:id="@+id/tv_datetime"
+                    android:text="Sample Date"
 
-    </RelativeLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"/>
+
+            <TextView
+                    android:id="@+id/tv_tags"
+                    android:text="Sample Tags"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

@@ -42,16 +42,16 @@ class FirebaseHelper(context: Context) {
                         Log.d(TAG, document.id + " => " + document.data)
                         itemList.add(
                             LostItem(
-                            document.data["photo"].toString(),
-                            //document.data["catTags"] as ArrayList<String>,
+                            document.data["image"].toString(),
+                            document.data["catTags"].toString(),
                             document.data["desc"].toString(),
                             document.data["dateTime"] as Long,
-                            document.data["lat"] as Long,
-                            document.data["long"] as Long,
+                            document.data["lat"] as Double,
+                            document.data["long"] as Double,
                             document.data["complaintId"].toString(),
                             document.data["trainName"].toString(),
                             document.data["contactName"].toString(),
-                            document.data["contactNo"] as Long,
+                            document.data["contactNo"].toString(),
                             document.data["status"] as Boolean
                             )
                         )
