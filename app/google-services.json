@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "636035637953",
+    "firebase_url": "https://lostfound-faeb4.firebaseio.com",
+    "project_id": "lostfound-faeb4",
+    "storage_bucket": "lostfound-faeb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636035637953:android:29f9dd2c39e0ef9c",
+        "android_client_info": {
+          "package_name": "com.horizon.lostfound"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636035637953-e5iv4actgjsjndqig2ivce10gqcblfo3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.horizon.lostfound",
+            "certificate_hash": "70180795ac3490d0b0ea9f37f8970edb79a4b3e5"
+          }
+        },
+        {
+          "client_id": "636035637953-cils07c0baujn48ok5pi64sp03hn0ota.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj_QQFM1dAijqT6N5trVuTBxNRGM7bVGg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636035637953-cils07c0baujn48ok5pi64sp03hn0ota.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
