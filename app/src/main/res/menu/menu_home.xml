@@ -3,7 +3,7 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.horizon.lostfound.view.HomeActivity">
     <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
+          android:title="Add Found Item"
           android:orderInCategory="100"
-          app:showAsAction="never"/>
+    />
 </menu>
