@@ -2,6 +2,7 @@ package com.horizon.lostfound.view
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.support.v7.widget.RecyclerView
 import android.util.Base64
@@ -9,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.horizon.lostfound.R
+import com.horizon.lostfound.firebase.SharedPreferencesHelper
 import com.horizon.lostfound.model.LostItem
+import com.horizon.lostfound.utils.TimeHelper
 import kotlinx.android.synthetic.main.item_view.view.*
 
 import java.util.*
@@ -41,9 +44,13 @@ class RecyclerViewAdapter(val event: ArrayList<LostItem>) : RecyclerView.Adapter
         val dateFormat = SimpleDateFormat("dd MMM yyyy")
         System.out.println(dateFormat.format(c.time))
 
+        holder?.posted_person_name?.text = "Posted by: "+event[position].contactName
         holder?.iv_item?.setImageBitmap(image)
-        holder?.tv_dateTime?.text = dateFormat.format(c.time)
+        holder?.tv_tags?.text =  "Category: "+event[position].catTags
+        holder?.tv_date?.text = dateFormat.format(c.time)
+        holder?.tv_time?.text = TimeHelper.timeElasped(event[position].dateTime)
         holder?.tv_desc?.text = event[position].desc
+
 
         holder.itemView.setOnClickListener {
 
@@ -59,6 +66,16 @@ class RecyclerViewAdapter(val event: ArrayList<LostItem>) : RecyclerView.Adapter
             intent.putExtra("contactName", event[position].contactName)
             intent.putExtra("contactNo", event[position].contactNo)
             intent.putExtra("status", event[position].status)
+
+            var appC = context as HomeActivity
+            if(appC.title == context.getString(R.string.app_name)) {
+                intent.putExtra("start", true)
+               // var sharedPreferencesHelper = SharedPreferencesHelper(context)
+               // sharedPreferencesHelper.setLock(true)
+            }else{
+                intent.putExtra("start", false)
+            }
+
             context.startActivity(intent)
 
             // Toast.makeText(context,children[position].data.author_fullname,Toast.LENGTH_SHORT).show()
@@ -70,9 +87,12 @@ class RecyclerViewAdapter(val event: ArrayList<LostItem>) : RecyclerView.Adapter
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val posted_person_name = itemView.tv_posted_person_name
         val iv_item = itemView.iv_item
         val tv_desc = itemView.tv_desc
-        val tv_dateTime = itemView.tv_datetime
+        val tv_date = itemView.tv_date
+        val tv_time = itemView.tv_time
+        val tv_tags = itemView.tv_tags
     }
 
     // This two methods useful for avoiding duplicate item

@@ -5,6 +5,7 @@ import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.horizon.lostfound.model.LostItem
 import com.horizon.lostfound.view.OnDataReceiveCallback
+import com.horizon.lostfound.view.OnDataReceiveCallback1
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
@@ -92,6 +93,42 @@ class FirebaseHelper(context: Context) {
                         }// End of Inner Query
                         */
                     callback.onDataReceived(itemList)
+                } else {
+                    Log.w(TAG, "Error getting documents.", task.exception)
+                }
+            }// End of Outer Query
+    }
+
+    fun getFoundItems(callback: OnDataReceiveCallback1){
+        itemList.clear()
+        db.collection("lostItem")
+            .whereEqualTo("contactNo", sharedPreferencesHelper.getMobileNumber())
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // eventList = ArrayList()
+                    for (document in task.result!!) {
+                        Log.d(TAG, document.id + " => " + document.data)
+                        itemList.add(
+                            LostItem(
+                                document.data["image"].toString(),
+                                document.data["catTags"].toString(),
+                                document.data["desc"].toString(),
+                                document.data["dateTime"] as Long,
+                                document.data["lat"] as Double,
+                                document.data["long"] as Double,
+                                document.data["complaintId"].toString(),
+                                document.data["trainName"].toString(),
+                                document.data["contactName"].toString(),
+                                document.data["contactNo"].toString(),
+                                document.data["status"] as Boolean
+                            )
+                        )
+                    }
+
+                    Log.d("Data is set","Outer Query")
+
+                    callback.onDataReceived1(itemList)
                 } else {
                     Log.w(TAG, "Error getting documents.", task.exception)
                 }

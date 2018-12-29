@@ -15,6 +15,7 @@ import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
 import com.horizon.lostfound.R
 import com.horizon.lostfound.firebase.FirebaseHelper
+import com.horizon.lostfound.firebase.SharedPreferencesHelper
 import com.horizon.lostfound.model.LostItem
 import kotlinx.android.synthetic.main.activity_add_lost_item.*
 import kotlinx.android.synthetic.main.item_view.*
@@ -35,6 +36,15 @@ class AddLostItem : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_lost_item)
+
+        var c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR)
+        month = c.get(Calendar.MONTH)+1
+        day = c.get(Calendar.DATE)
+        hour = c.get(Calendar.HOUR_OF_DAY)
+        min = c.get(Calendar.MINUTE)
+        val parsedDate = "${day}/${month}/${year}"
+        et_date.setText(parsedDate)
 
         //Adapter for spinner
         catTags.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, myStrings)
@@ -121,7 +131,7 @@ class AddLostItem : AppCompatActivity() {
             customView {
                 verticalLayout {
                     datePicker = datePicker {
-                        minDate = System.currentTimeMillis()
+                        //minDate = System.currentTimeMillis()
                     }
                 }
             }
@@ -137,10 +147,14 @@ class AddLostItem : AppCompatActivity() {
         }.show()
     }
 
+    override fun onBackPressed() {
+        moveToHome()
+    }
+
     fun onSubmit(view: View){
         val drawable = iv_image.getDrawable() as BitmapDrawable
         val bitmap = drawable.bitmap
-        val scaledBitmap = Bitmap.createScaledBitmap(bitmap, 120, 90, false)
+        val scaledBitmap = Bitmap.createScaledBitmap(bitmap, 160, 90, false)
 
         val c = Calendar.getInstance()
         c.set(year,month-1,day,hour,min,0)
@@ -163,6 +177,10 @@ class AddLostItem : AppCompatActivity() {
 
         var firebaseHelper = FirebaseHelper(this)
         firebaseHelper.addLostItem(lostItem)
+
+        var sharedPreferencesHelper = SharedPreferencesHelper(this)
+        sharedPreferencesHelper.setMobileNumber(et_contact_number.text.toString())
+
         moveToHome()
 
     }

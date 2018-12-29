@@ -2,7 +2,7 @@
     <string name="app_name">Lost&amp;Found</string>
     <string name="action_settings">Settings</string>
 
-    <string name="btn_arrow">></string>
+    <string name="btn_arrow">Change</string>
 
     <string name="description">Description</string>
     <string name="date">Date</string>
@@ -12,5 +12,9 @@
     <string name="contactName">Contact Name</string>
     <string name="contactNumber">Contact Number</string>
     <string name="submitButton">SUBMIT</string>
+
+    <string name="hello_worldBlue">Hello world!</string>
+
+
 
 </resources>

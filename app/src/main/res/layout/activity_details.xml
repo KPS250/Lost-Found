@@ -24,93 +24,255 @@
                 <ImageView
                         android:id="@+id/iv_image"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="200dp"
                         android:layout_marginBottom="10dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_launcher_background" />
 
-                <TextView
-                        android:id="@+id/tv_cat_tags"
+                <RelativeLayout
+                        android:id="@+id/rl_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/iv_image"
-                        android:layout_marginTop="10dp"
-                        android:textSize="20sp"
-                        tools:text="Category Tags" />
+                        android:layout_marginTop="10dp">
 
-                <TextView
-                        android:id="@+id/tv_description"
+                    <TextView
+                            android:id="@+id/label_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/description"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="@string/description" />
+
+                    <TextView
+                            android:id="@+id/tv_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"
+                            tools:text="@string/description" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/rl_cat_tags"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_cat_tags"
-                        android:layout_marginTop="10dp"
-                        android:textSize="20sp"
-                        tools:text="@string/description" />
+                        android:layout_below="@id/rl_description"
+                        android:layout_marginTop="10dp">
 
-                <TextView
-                        android:id="@+id/tv_date"
+                    <TextView
+                            android:id="@+id/label_vat_tags"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tags"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="Tags" />
+
+                    <TextView
+                            android:id="@+id/tv_cat_tags"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"
+                            tools:text="Category Tags" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/rl_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_description"
-                        android:layout_marginTop="10dp"
-                        android:textSize="20sp"
-                        tools:text="@string/date" />
+                        android:layout_below="@id/rl_cat_tags"
+                        android:layout_marginTop="10dp">
 
-                <TextView
-                        android:id="@+id/tv_time"
+                    <TextView
+                            android:id="@+id/label_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Posted Date"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="@string/date" />
+
+                    <TextView
+                            android:id="@+id/tv_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"
+                            tools:text="@string/date" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/rl_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_date"
+                        android:layout_below="@id/rl_date"
                         android:layout_marginTop="10dp"
-                        android:textSize="20sp"
-                        android:visibility="gone"
-                        tools:text="@string/time" />
+                        android:visibility="gone">
 
-                <TextView
-                        android:id="@+id/tv_complaint_id"
+                    <TextView
+                            android:id="@+id/label_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/time"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="@string/time" />
+
+                    <TextView
+                            android:id="@+id/tv_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"
+                            tools:text="@string/time" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/rl_complaint_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_time"
-                        android:layout_marginTop="10dp"
-                        android:textSize="20sp"
-                        tools:text="@string/complaintId" />
+                        android:layout_below="@id/rl_time"
+                        android:layout_marginTop="10dp">
 
-                <TextView
-                        android:id="@+id/tv_train_name"
+                    <TextView
+                            android:id="@+id/label_complaint_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/complaintId"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="@string/complaintId" />
+
+                    <TextView
+                            android:id="@+id/tv_complaint_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"
+                            tools:text="@string/complaintId" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/rl_train_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_complaint_id"
-                        android:layout_marginTop="10dp"
-                        android:textSize="20sp"
-                        tools:text="@string/trainName" />
+                        android:layout_below="@id/rl_complaint_id"
+                        android:layout_marginTop="10dp">
 
-                <TextView
-                        android:id="@+id/tv_contact_name"
+                    <TextView
+                            android:id="@+id/label_train_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/trainName"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="@string/trainName" />
+
+                    <TextView
+                            android:id="@+id/tv_train_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"
+                            tools:text="@string/trainName" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/rl_contact_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_train_name"
-                        android:layout_marginTop="10dp"
-                        android:textSize="20sp"
-                        tools:text="@string/contactName" />
+                        android:layout_below="@id/rl_train_name"
+                        android:layout_marginTop="10dp">
 
-                <TextView
-                        android:id="@+id/tv_contact_number"
+                    <TextView
+                            android:id="@+id/label_contact_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/contactName"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="@string/contactName" />
+
+                    <TextView
+                            android:id="@+id/tv_contact_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"
+                            tools:text="@string/contactName" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/rl_contact_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_contact_name"
+                        android:layout_below="@id/rl_contact_name"
                         android:layout_marginTop="10dp"
-                        android:textSize="20sp"
-                        tools:text="@string/contactNumber" />
+                        android:visibility="gone">
+
+                    <TextView
+                            android:id="@+id/label_contact_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/contactNumber"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="@string/contactNumber" />
+
+                    <TextView
+                            android:id="@+id/tv_contact_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"
+                            android:onClick="callNow"
+                            tools:text="@string/contactNumber" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/rl_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rl_contact_number"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone">
+
+                    <TextView
+                            android:id="@+id/label_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Status"
+                            android:textColor="@color/colorDarksLateGrey"
+                            tools:text="@string/contactNumber" />
+
+                    <Spinner
+                            android:id="@+id/spinner_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="130dp"
+                            android:textColor="@color/colorDimGrey"/>
+
+                </RelativeLayout>
+
+                <Button
+                        android:id="@+id/bt_claim"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rl_status"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorAccent"
+                        android:text="Claim Item"
+                        android:onClick="claimItem"
+                        android:textColor="@android:color/white"
+                        android:visibility="visible" />
+
 
                 <ImageView
                         android:id="@+id/iv_map"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
+                        android:layout_below="@id/bt_claim"
                         android:layout_marginBottom="20dp"
                         android:layout_marginTop="10dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/map"
-                        android:layout_below="@id/tv_contact_number"/>
+                        android:onClick="openMap"
+                        android:src="@drawable/map" />
             </RelativeLayout>
         </ScrollView>
     </android.support.v7.widget.CardView>
