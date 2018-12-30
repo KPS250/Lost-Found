@@ -50,6 +50,10 @@ class RecyclerViewAdapter(val event: ArrayList<LostItem>) : RecyclerView.Adapter
         holder?.tv_date?.text = dateFormat.format(c.time)
         holder?.tv_time?.text = TimeHelper.timeElasped(event[position].dateTime)
         holder?.tv_desc?.text = event[position].desc
+        if(event[position].status)
+            holder?.tv_status_active.visibility=View.VISIBLE
+        else
+            holder?.tv_status_inactive.visibility=View.VISIBLE
 
 
         holder.itemView.setOnClickListener {
@@ -70,8 +74,7 @@ class RecyclerViewAdapter(val event: ArrayList<LostItem>) : RecyclerView.Adapter
             var appC = context as HomeActivity
             if(appC.title == context.getString(R.string.app_name)) {
                 intent.putExtra("start", true)
-               // var sharedPreferencesHelper = SharedPreferencesHelper(context)
-               // sharedPreferencesHelper.setLock(true)
+
             }else{
                 intent.putExtra("start", false)
             }
@@ -93,6 +96,8 @@ class RecyclerViewAdapter(val event: ArrayList<LostItem>) : RecyclerView.Adapter
         val tv_date = itemView.tv_date
         val tv_time = itemView.tv_time
         val tv_tags = itemView.tv_tags
+        val tv_status_active = itemView.tv_status_active
+        val tv_status_inactive = itemView.tv_status_inactive
     }
 
     // This two methods useful for avoiding duplicate item

@@ -29,59 +29,85 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <TextView
-                    android:id="@+id/tv_desc"
+            <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sample Desc"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="5dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorAccent"/>
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/tv_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sample Desc"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorAccent"/>
+
+                <TextView
+                        android:id="@+id/tv_status_active"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentRight="true"
+                        android:visibility="gone"
+                        android:text="Active"
+                        android:textColor="@android:color/holo_green_dark"/>
+
+                <TextView
+                        android:id="@+id/tv_status_inactive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:text="Inactive"
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentRight="true"
+                        android:visibility="gone"
+                        android:textColor="@color/colorRed"/>
+            </RelativeLayout>
 
             <TextView
                     android:id="@+id/tv_posted_person_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Kshitija"
+                    android:textSize="14dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                   />
+                    android:layout_marginEnd="10dp" />
 
             <TextView
                     android:id="@+id/tv_tags"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+                    android:textSize="14dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
                     android:text="Sample Tags"
                     android:textColor="@color/colorPrimaryDark"/>
 
             <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp">
 
                 <TextView
                         android:id="@+id/tv_date"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
                         android:text="Sample Date"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="10dp"
                         android:textColor="@android:color/black"/>
 
                 <TextView
                         android:id="@+id/tv_time"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
                         android:text="Sample Time"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="10dp"
                         android:textColor="@android:color/black"/>
             </RelativeLayout>
         </LinearLayout>

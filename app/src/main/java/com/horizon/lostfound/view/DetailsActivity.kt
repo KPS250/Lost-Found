@@ -11,11 +11,9 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.Toast
 import com.horizon.lostfound.R
 import kotlinx.android.synthetic.main.activity_details.*
 import org.jetbrains.anko.makeCall
-import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,6 +55,7 @@ class DetailsActivity : AppCompatActivity() {
             long = bundle.getDouble("long")
 
             if(!bundle.getBoolean("start")){
+
                 rl_status.visibility = View.VISIBLE
                 bt_claim.visibility = View.VISIBLE
                 bt_claim.text="UPDATE"
@@ -77,6 +76,12 @@ class DetailsActivity : AppCompatActivity() {
                     }
 
                 }
+            }
+
+            if(!bundle.getBoolean("status"))
+            {
+                bt_claim.visibility=View.GONE
+                rl_status.visibility=View.GONE
             }
 
         }
@@ -131,8 +136,46 @@ class DetailsActivity : AppCompatActivity() {
 
             builder.show()
         }else{
-            toast("Item Updated")
-            onBackPressed()
+            val context = this
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("OTP Verification")
+            builder.setMessage("Please provide an OTP from person claiming the item to change the status")
+
+            // https://stackoverflow.com/questions/10695103/creating-custom-alertdialog-what-is-the-root-view
+            // Seems ok to inflate view with null rootView
+            val view = layoutInflater.inflate(R.layout.layout_phoneno, null)
+
+            var categoryEditText = view.findViewById(R.id.categoryEditText) as EditText
+            categoryEditText.hint = "Enter OTP"
+
+            builder.setView(view)
+
+            // set up the ok button
+            builder.setPositiveButton(android.R.string.ok) { dialog, p1 ->
+                val newCategory = categoryEditText.text
+                var isValid = true
+                if (newCategory.isBlank() || newCategory.toString() == "") {
+                    categoryEditText.error = "Invalid"
+                    isValid = false
+                }
+
+                if (isValid) {
+                    // do something
+                    //toast(categoryEditText.text.toString())
+                    rewardDialog()
+
+                }
+
+                if (!isValid) {
+                    dialog.dismiss()
+                }
+            }
+
+            builder.setNegativeButton(android.R.string.cancel) { dialog, p1 ->
+                dialog.cancel()
+            }
+
+            builder.show()
         }
 
     }
@@ -145,4 +188,16 @@ class DetailsActivity : AppCompatActivity() {
             startActivity(mapIntent)
         }
     }
+
+    fun rewardDialog(){
+        val builder = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.layout_reward, null)
+        builder.setView(view)
+        builder.setPositiveButton(android.R.string.ok) { dialog, p1 ->
+            dialog.dismiss()
+        }
+        builder.show()
+    }
+
+
 }

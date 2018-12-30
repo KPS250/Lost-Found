@@ -67,6 +67,7 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         else {
+            splashDialog()
             start=true
             fab.show()
             firebaseHelper.getLostItems(object : OnDataReceiveCallback {
@@ -75,8 +76,7 @@ class HomeActivity : AppCompatActivity() {
                     if (eventList.size > 0) {
                         recycler_view.adapter = RecyclerViewAdapter(firebaseHelper.itemList)
                         recycler_view.visibility = View.VISIBLE
-                        //lv_empty.visibility = View.GONE
-                        //tv_noEvents.visibility = View.GONE
+                        lv_empty.visibility = View.GONE
                     }
                 }
             })
@@ -221,13 +221,18 @@ class HomeActivity : AppCompatActivity() {
                 if (eventList.size > 0) {
                     recycler_view.adapter = RecyclerViewAdapter(firebaseHelper.itemList)
                     recycler_view.visibility = View.VISIBLE
-                    //lv_empty.visibility = View.GONE
-                    //tv_noEvents.visibility = View.GONE
+                    lv_empty.visibility = View.GONE
                 }
             }
         })
     }
 
+    fun splashDialog(){
+            val builder = AlertDialog.Builder(this)
+            val view = layoutInflater.inflate(R.layout.layout_splash, null)
+            builder.setView(view)
+            builder.show()
+    }
 }
 
 interface OnDataReceiveCallback {
