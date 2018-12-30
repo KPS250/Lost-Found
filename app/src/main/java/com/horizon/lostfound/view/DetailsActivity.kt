@@ -195,6 +195,7 @@ class DetailsActivity : AppCompatActivity() {
         builder.setView(view)
         builder.setPositiveButton(android.R.string.ok) { dialog, p1 ->
             dialog.dismiss()
+            onBackPressed()
         }
         builder.show()
     }

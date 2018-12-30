@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -19,6 +20,7 @@ import com.horizon.lostfound.firebase.SharedPreferencesHelper
 import com.horizon.lostfound.model.LostItem
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_home.*
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
 
 
@@ -53,15 +55,14 @@ class HomeActivity : AppCompatActivity() {
         }
 
         val bundle=intent.extras
-        if(bundle!=null && !bundle.getBoolean("start")) {
+        if(intent.hasExtra("start") && !bundle.getBoolean("start")) {
+            alert(""+bundle.getBoolean("start"))
+            Log.d("KEY-B",""+bundle.getBoolean("start"))
             start = false
             if(sharedPreferencesHelper.getMobileNumber()!="") {
-               // actionBar.title="My Found Items"
+                Log.d("KEY-M",sharedPreferencesHelper.getMobileNumber())
                 myFoundItems()
-                title="My Found Items"
-               fab.hide()
-
-
+                fab.hide()
             }else{
                 claimItem()
             }
@@ -182,7 +183,7 @@ class HomeActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.layout_phoneno, null)
 
         val categoryEditText = view.findViewById(R.id.categoryEditText) as EditText
-
+        categoryEditText.hint = "Phone Number"
         builder.setView(view)
 
         // set up the ok button
@@ -199,6 +200,7 @@ class HomeActivity : AppCompatActivity() {
                 //toast(categoryEditText.text.toString())
                 sharedPreferencesHelper.setMobileNumber(categoryEditText.text.toString())
                 myFoundItems()
+                dialog.dismiss()
             }
 
             if (!isValid) {
@@ -215,6 +217,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun myFoundItems(){
+        title = "My Found Items"
         firebaseHelper.getFoundItems(object : OnDataReceiveCallback1 {
             override fun onDataReceived1(eventList: ArrayList<LostItem>) {
 
